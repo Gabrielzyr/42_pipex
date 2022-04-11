@@ -35,6 +35,6 @@ fclean: clean
 	make fclean -C ./libft
 
 valgrind:
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) . "tr o A" "tr A H" outfile
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) . "ls -l" "wc -l" outfile
 
 re: fclean all

@@ -22,6 +22,7 @@ typedef struct s_cmd
 typedef struct s_pipe
 {
     int     fd[2];
+    int     child_status;
     t_cmd   cmds;
     char    *infile;
     char    *outfile;

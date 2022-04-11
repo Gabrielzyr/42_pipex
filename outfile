@@ -1,11 +1,1 @@
-
-GOT here
-OK lstotal 72
--rwxrwxr-x 1 gabriel gabriel 17776 abr 11 00:28 a.out
-drwxrwxr-x 2 gabriel gabriel  4096 abr 11 01:16 headers
-drwxrwxr-x 2 gabriel gabriel  4096 abr 11 02:15 libft
--rw-rw-r-- 1 gabriel gabriel   781 abr 11 01:23 Makefile
--rw-r--r-- 1 gabriel gabriel    15 abr 11 02:15 outfile
--rwxrwxr-x 1 gabriel gabriel 29312 abr 11 02:15 pipex
-drwxrwxr-x 2 gabriel gabriel  4096 abr 11 02:15 src
--rw-rw-r-- 1 gabriel gabriel     0 mar 27 18:13 teste
+9
