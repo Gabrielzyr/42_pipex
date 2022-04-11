@@ -6,11 +6,11 @@
 /*   By: gamonte- <gamonte-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/02 21:23:17 by gamonte-          #+#    #+#             */
-/*   Updated: 2022/03/27 15:26:19 by gamonte-         ###   ########.fr       */
+/*   Updated: 2022/04/11 01:01:26 by gamonte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../headers/pipex.h"
 
 char *ft_substr(char const *s, unsigned int start, size_t len)
 {

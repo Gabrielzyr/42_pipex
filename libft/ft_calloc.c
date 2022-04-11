@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamonte- <gamonte-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/02 21:17:23 by gamonte-          #+#    #+#             */
-/*   Updated: 2022/03/27 15:30:56 by gamonte-         ###   ########.fr       */
+/*   Created: 2021/09/02 21:17:26 by gamonte-          #+#    #+#             */
+/*   Updated: 2021/09/02 21:17:27 by gamonte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void ft_bzero(void *s, size_t n)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-    ft_memset(s, '\0', n);
+	char	*new_str;
+
+	new_str = malloc(nmemb * size);
+	if (!new_str)
+		return (0);
+	ft_bzero(new_str, nmemb * size);
+	return (new_str);
 }

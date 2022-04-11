@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamonte- <gamonte-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/02 21:22:38 by gamonte-          #+#    #+#             */
-/*   Updated: 2022/03/27 17:38:46 by gamonte-         ###   ########.fr       */
+/*   Created: 2021/09/02 21:21:46 by gamonte-          #+#    #+#             */
+/*   Updated: 2022/04/11 01:01:26 by gamonte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../headers/pipex.h"
 
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+void *ft_memset(void *s, int c, size_t n)
 {
     size_t i;
+    unsigned char *j;
 
     i = 0;
-    if (n == 0)
-        return (0);
-    if (s1[i] == '\0' || s2[i] == '\0')
-        return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-    while (i < (n - 1) && s1[i] && s2[i])
+    j = s;
+    while (i < n)
     {
-        if (s1[i] != s2[i])
-            return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+        j[i] = (unsigned char)c;
         i++;
     }
-    return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+    return (s);
 }

@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamonte- <gamonte-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/02 21:21:46 by gamonte-          #+#    #+#             */
-/*   Updated: 2022/03/27 15:30:43 by gamonte-         ###   ########.fr       */
+/*   Created: 2021/09/02 21:22:09 by gamonte-          #+#    #+#             */
+/*   Updated: 2022/02/08 03:30:11 by gamonte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
-
-void *ft_memset(void *s, int c, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
-    size_t i;
-    unsigned char *j;
+	int	i;
 
-    i = 0;
-    j = s;
-    while (i < n)
-    {
-        j[i] = (unsigned char)c;
-        i++;
-    }
-    return (s);
+	i = 0;
+	while (s[i])
+	{
+		if ((char)c == s[i])
+			return ((char *)&s[i]);
+		i++;
+	}
+	if ((char)c == '\0')
+		return ((char *)&s[i]);
+	return (0);
 }

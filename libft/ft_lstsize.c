@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamonte- <gamonte-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/02 21:22:30 by gamonte-          #+#    #+#             */
-/*   Updated: 2022/03/27 15:24:15 by gamonte-         ###   ########.fr       */
+/*   Created: 2021/09/02 21:21:26 by gamonte-          #+#    #+#             */
+/*   Updated: 2021/09/02 21:21:27 by gamonte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	i;
+	int	count;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	count = 0;
+	while (lst != NULL)
+	{
+		lst = lst->next;
+		count ++;
+	}
+	return (count);
 }

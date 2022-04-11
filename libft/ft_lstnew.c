@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gamonte- <gamonte-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/02 21:17:26 by gamonte-          #+#    #+#             */
-/*   Updated: 2022/03/27 15:24:53 by gamonte-         ###   ########.fr       */
+/*   Created: 2021/09/02 21:20:46 by gamonte-          #+#    #+#             */
+/*   Updated: 2021/09/02 21:21:23 by gamonte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "libft.h"
 
-void *ft_calloc(size_t nmemb, size_t size)
+t_list	*ft_lstnew(void *content)
 {
-    char *new_str;
+	t_list	*node;
 
-    new_str = malloc(nmemb * size);
-    if (!new_str)
-        return (0);
-    ft_bzero(new_str, nmemb * size);
-    return (new_str);
+	node = malloc(sizeof(t_list));
+	if (!node)
+		return (0);
+	node->content = content;
+	node->next = NULL;
+	return (node);
 }
