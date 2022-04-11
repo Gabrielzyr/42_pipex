@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "../headers/pipex.h": "c"
+        "../headers/pipex.h": "c",
+        "libft.h": "c"
     }
 }

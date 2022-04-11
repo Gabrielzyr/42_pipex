@@ -1,6 +1,6 @@
 NAME	=	pipex
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g -Wall -Wextra -Werror
 SRC_PATH = ./src
 
 LIBFT_PATH = ./libft
@@ -35,6 +35,6 @@ fclean: clean
 	make fclean -C ./libft
 
 valgrind:
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) infile "tr o A" "tr A H" outfile
+	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME) . "tr o A" "tr A H" outfile
 
 re: fclean all
