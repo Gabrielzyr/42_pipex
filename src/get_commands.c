@@ -1,6 +1,6 @@
 #include "../headers/pipex.h"
 
-char *replace_char(char *str, char replace, char new_char)
+char *replace(char *str, char replace, char new_char)
 {
     int i;
     char *new_str;
@@ -10,33 +10,60 @@ char *replace_char(char *str, char replace, char new_char)
     while(new_str[i])
     {
         if (new_str[i] == '\'')
+        {
+            i++;
             while(new_str[i] != '\'')
             {
                 if (new_str[i] == replace)
                     new_str[i] = new_char;
                 i++;
             }
+        }
         i++;
     }
     return (new_str);
 }
 
-void get_commands(t_pipe *p_data, char **argv)
+void revert_replace(char **split)
 {
-    char *cmd;
+    int i;
+    int j;
+    char *tmp;
+    i = 0;
 
-    cmd = replace_char(argv[2], ' ', 1);
-    p_data->cmds.cmd_1 = ft_split(cmd, ' ');
-    free(cmd);
-    if (p_data->cmds.cmd_1 == NULL)
+    while (split[i])
     {
-        ft_printf("error");
-        exit(EXIT_FAILURE);
+        j = 0;
+        while (split[i][j])
+        {
+            if (split[i][j] == 1)
+                split[i][j] = ' ';
+            j++;
+            if (split[i][j] == '\'')
+            {
+                tmp = ft_strtrim(split[i], "'");
+                free(split[i]);
+                split[i] = tmp;
+            }
+        }
+        i++;
     }
-    cmd = replace_char(argv[3], ' ', 1);
-    p_data->cmds.cmd_2 = ft_split(cmd, ' ');
-    // ft_printf("cmd: %s | %s\n", p_data->cmds.cmd_1[0], p_data->cmds.cmd_2[0]);
-    free(cmd);
+}
 
-    return ;
+void get_commands(t_pipe *p_data, char **argv, int cmd)
+{
+    char *tmp_cmd;
+
+    if (cmd == 1)
+    {
+        tmp_cmd = replace(argv[2], ' ', 1);
+        p_data->cmds.cmd_1 = ft_split(tmp_cmd, ' ');
+        revert_replace(p_data->cmds.cmd_1);
+        free(tmp_cmd);
+        return;
+    }
+    tmp_cmd = replace(argv[3], ' ', 1);
+    p_data->cmds.cmd_2 = ft_split(tmp_cmd, ' ');
+    revert_replace(p_data->cmds.cmd_2);
+    free(tmp_cmd);
 }

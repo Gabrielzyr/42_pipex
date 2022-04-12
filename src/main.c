@@ -3,39 +3,25 @@
 static int check_args(t_pipe *p_data, int argc, char **args)
 {
     int error;
-    
+
+    p_data->fd_infile = open(args[1], O_RDONLY);
+    p_data->fd_outfile = open(args[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
     error = 0;
     if (argc != 5)
     {
         // ft_printf("wrong commands number");
         error = 1;
     }
-        // ft_printf("teste: %s || %d\n", args[1], access(args[1], F_OK));
-    if (access(args[1], F_OK) < 0)
-    {
-        // ft_printf("can't access file: %s\n", args[1]);
+    // ft_printf("teste: %s || %d || %d\n", args[1], access(args[1], F_OK), p_data->fd_infile);
+    if (access(args[1], F_OK) == 0 && p_data->fd_infile < 0) // perm
+        error = 2;
+    if (access(args[1], F_OK) < 0) // non exist
         error = 1;
-    }
-    p_data->fd_outfile = open(args[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    if (p_data->fd_outfile < 0)
-    {
-        // ft_printf("can't access/create output file: %s", args[4]);
+    if (p_data->fd_outfile < 0) // non exist
         error = 1;
-    }
-    // ft_printf("teste 1: %d |\n", error);
+    close(p_data->fd_infile);
+    close(p_data->fd_outfile);
     return (error);
-}
-
-static char **get_cmd_paths(char **envp)
-{
-    while (*envp)
-    {
-        if (ft_strncmp(*envp, "PATH=", 5) == 0)
-            return (ft_split(*envp + 5, ':'));
-        envp++;
-    }
-    // ft_printf("path error, nooooooo.....");
-    return (NULL);
 }
 
 int main(int argc, char **argv, char **envp)
@@ -43,25 +29,21 @@ int main(int argc, char **argv, char **envp)
     t_pipe p_data;
 
     p_data.has_error = check_args(&p_data, argc, argv);
-    // ft_printf("teste 2: %d |\n", p_data.has_error);
+    ft_printf("error of pipe %d\n", p_data.has_error);
     if (p_data.has_error == 0)
     {
         p_data.envp = envp;
         p_data.infile = argv[1];
         p_data.outfile = argv[4];
-        p_data.cmd_paths = get_cmd_paths(envp);
-        get_commands(&p_data, argv);
-        ft_pipex(&p_data);
-        // int i = -1;
-        // while (p_data.cmd_paths[i++])
-            // ft_printf("ok %s \n", p_data.cmd_paths[i]);
-        // ft_printf("ok %s \n", p_data.cmd_paths[1]);
+        ft_pipex(&p_data, argv, envp);
     }
     else
     {
         ft_printf("error of pipe");
+        if (p_data.has_error == 2)
+            exit(0);
+        exit(1);
     }
 
     return (0);
-    
 }

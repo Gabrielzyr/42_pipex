@@ -36,7 +36,8 @@ typedef struct s_pipe
 } t_pipe;
 
 void create_pipe(t_pipe pipe, char **argv, char **env);
-void get_commands(t_pipe *p_data, char **argv);
-void ft_pipex(t_pipe *p_data);
+void get_commands(t_pipe *p_data, char **argv, int cmd);
+void ft_pipex(t_pipe *p_data, char **argv, char **envp);
+void free_matrix(char **matrix);
 
 #endif
