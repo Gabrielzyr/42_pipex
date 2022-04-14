@@ -6,7 +6,7 @@
 /*   By: gamonte- <gamonte-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/14 20:40:11 by gamonte-          #+#    #+#             */
-/*   Updated: 2022/04/14 20:40:12 by gamonte-         ###   ########.fr       */
+/*   Updated: 2022/04/15 01:54:33 by gamonte-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ enum error_types
     NO_ERROR,
     ARG_ERROR,
     PERMISSION_ERROR,
-    FILE_ERROR,
-    CMD_ERROR
+    INFILE_ERROR,
+    OUTFILE_ERROR,
+    CMD_NOT_FOUND
 };
 
 typedef struct s_cmd
