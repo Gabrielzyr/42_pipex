@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gamonte- <gamonte-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/14 20:40:11 by gamonte-          #+#    #+#             */
+/*   Updated: 2022/04/14 20:40:12 by gamonte-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 #define PIPEX_H
 
@@ -7,6 +19,15 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "../libft/libft.h"
+
+enum error_types
+{
+    NO_ERROR,
+    ARG_ERROR,
+    PERMISSION_ERROR,
+    FILE_ERROR,
+    CMD_ERROR
+};
 
 typedef struct s_cmd
 {
@@ -39,5 +60,6 @@ void create_pipe(t_pipe pipe, char **argv, char **env);
 void get_commands(t_pipe *p_data, char **argv, int cmd);
 void ft_pipex(t_pipe *p_data, char **argv, char **envp);
 void free_matrix(char **matrix);
+void get_cmd_paths(t_pipe *p_data, char **envp);
 
 #endif

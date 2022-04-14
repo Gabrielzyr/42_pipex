@@ -29,7 +29,7 @@ int main(int argc, char **argv, char **envp)
     t_pipe p_data;
 
     p_data.has_error = check_args(&p_data, argc, argv);
-    ft_printf("error of pipe %d\n", p_data.has_error);
+    ft_printf("has error? %d\n", p_data.has_error);
     if (p_data.has_error == 0)
     {
         p_data.envp = envp;
