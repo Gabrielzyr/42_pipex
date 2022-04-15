@@ -11,7 +11,7 @@ HEADERS = ./headers/so_long.h
 INCLUDES_DIR = ./headers $(LIBFT_PATH)
 INCLUDES = $(addprefix -I,$(INCLUDES_DIR))
 
-SRCS	= main.c ft_pipex.c get_commands.c clear.c
+SRCS	= main.c ft_pipex.c get_commands.c clear.c utils.c pipex_utils.c
 
 OBJS = $(SRCS:%.c=%.o)
 SRCS	:= $(addprefix $(SRC_PATH)/,$(SRCS))
@@ -35,6 +35,6 @@ fclean: clean
 	make fclean -C ./libft
 
 valgrind:
-	valgrind --leak-check=full --show-leak-kinds=all --trace-children=yes ./$(NAME) infile "catzado" "wc -w" output
+	valgrind --leak-check=full -s --show-leak-kinds=all --trace-children=yes ./$(NAME) infile_bad "catzado" "echo 'teste 42'" outfile
 
 re: fclean all
