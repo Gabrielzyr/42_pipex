@@ -6,4 +6,6 @@ output
 teste
 tester
 infile
+infile_bad
+output
 a.out
